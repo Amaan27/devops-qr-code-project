@@ -58,19 +58,17 @@ async def generate_qr(url: str):
         s3.put_object(Bucket=bucket_name, Key=file_name, Body=img_byte_arr, ContentType='image/png')
         
         # Generate the S3 URL
-        # s3_url = f"https://{bucket_name}.s3.amazonaws.com/{file_name}"
-        # return {"qr_code_url": s3_url}
-        s3_url = s3.generate_presigned_url(
-    'get_object',
-    Params={'Bucket': bucket_name, 'Key': file_name},
-    ExpiresIn=3600  # valid for 1 hour
-)
+        s3_url = f"https://{bucket_name}.s3.amazonaws.com/{file_name}"
+        return {"qr_code_url": s3_url}
+    #     s3_url = s3.generate_presigned_url(
+    # 'get_object',
+    # Params={'Bucket': bucket_name, 'Key': file_name},
+    # ExpiresIn=3600  # valid for 1 hour
+# )
 
     # except Exception as e:
     #     raise HTTPException(status_code=500, detail=str(e))
     except Exception as e:
       print("ERROR:", e)  # <-- add this
       raise HTTPException(status_code=500, detail=str(e))
-    
-    return {"qr_code_url": s3_url}
     
