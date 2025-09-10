@@ -13,7 +13,8 @@ app = FastAPI()
 
 # Allowing CORS for local testing
 origins = [
-    "http://localhost:3000"
+    "http://localhost:3000",
+    "http://localhost:3030"
 ]
 
 app.add_middleware(
@@ -22,6 +23,7 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+print("Allowed origins:", origins)
 
 # AWS S3 Configuration
 s3 = boto3.client(
