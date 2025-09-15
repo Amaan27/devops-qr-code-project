@@ -11,7 +11,7 @@ jobs:
         run: docker build ./api/ -t docker7541/qr-code-api:latest
 
       - name: Login to docker
-        run: docker login -u docker7541 -p {{  secrets.DOCKER_HUB_TOKEN  }}
+        run: docker login -u docker7541 -p ${{  secrets.DOCKER_HUB_TOKEN  }}
 
       - name: Push to docker
         run: docker push docker7541/qr-code-api:latest
