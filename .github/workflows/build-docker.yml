@@ -9,4 +9,4 @@ jobs:
       - name: Build image
         run: docker build ./api/ -t docker7541/qr-code-api:latest
       - name: Push image to docker hub
-        run: docker push docker7541/qr-code-api
+        run: docker push docker7541/qr-code-api:latest
